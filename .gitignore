@@ -1,12 +1,6 @@
 # === Node / Angular Frontend ===
-node_modules/
-dist/
-out-tsc/
-.angular/
-.angular-cache/
-coverage/
-karma-*.log
-tsconfig.tsbuildinfo
+geocalc-frontend/node_modules/
+geocalc-frontend/.angular/
 
 # === Environment / Secrets ===
 .env
