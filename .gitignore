@@ -1,0 +1,57 @@
+# === Node / Angular Frontend ===
+node_modules/
+dist/
+out-tsc/
+.angular/
+.angular-cache/
+coverage/
+karma-*.log
+tsconfig.tsbuildinfo
+
+# === Environment / Secrets ===
+.env
+
+# === Java / Spring Boot Backend ===
+target/
+*.class
+*.jar
+*.war
+*.log
+hs_err_pid*.log
+
+# === Maven ===
+.mvn/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+release.properties
+
+# === IDEs & Editors ===
+.idea/
+.vscode/
+*.iml
+*.swp
+*.swo
+
+# === macOS / Windows ===
+.DS_Store
+Thumbs.db
+
+# === Docker / Devcontainer ===
+.dockerignore
+.devcontainer/
+docker-compose.override.yml
+docker/keycloak-import/*.realm.json
+docker/keycloak-import/*.json
+
+# === Swagger Generated Files (if applicable) ===
+swagger-ui.html
+api-docs/
+
+# === Git & Submodule Metadata ===
+**/.gitmodules
+**/.git/
+
+# === Test Output ===
+test-output/
+test-results/
