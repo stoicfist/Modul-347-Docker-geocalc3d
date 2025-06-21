@@ -42,3 +42,24 @@ Eine containerisierte Fullstack-Applikation zur Eingabe, Berechnung und 3D-Visua
 Erstellt alle Images lokal:
 ```bash
 docker compose -f docker/docker-compose-build.yml up --build
+
+---
+
+## ☁️ Start mit Docker-Hub-Images
+
+Alternativ zum lokalen Build können die Container auch direkt aus der Docker Registry geladen und gestartet werden:
+
+```bash
+docker compose -f docker/docker-compose-hub.yml up
+
+---
+
+## 🔗 Nützliche Links während der Entwicklung
+
+| Dienst       | URL                                               | Beschreibung                            |
+|--------------|---------------------------------------------------|-----------------------------------------|
+| Frontend     | [http://localhost:4200](http://localhost:4200)    | Angular App Startseite                  |
+| Backend API  | [http://localhost:8080](http://localhost:8080)    | Spring Boot Backend                     |
+| Swagger UI   | [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html) | API Dokumentation / Testing             |
+| Keycloak     | [http://localhost:8080](http://localhost:8080)    | Admin Console Login (Realm: `geocalc`)  |
+| pgAdmin      | [http://localhost:5050](http://localhost:5050)    | PostgreSQL Verwaltung                   |
