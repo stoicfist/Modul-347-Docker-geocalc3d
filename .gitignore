@@ -1,35 +1,5 @@
-# === Node / Angular Frontend ===
-geocalc-frontend/node_modules/
-geocalc-frontend/.angular/
-geocalc-frontend/dist/
-geocalc-frontend/.vscode/
-
 # === Environment / Secrets ===
 docker/.env
-
-# === Java / Spring Boot Backend ===
-geocalc-backend/peter.ngo.geocalc3d/target/
-geocalc-backend/peter.ngo.geocalc3d/*.log
-geocalc-backend/peter.ngo.geocalc3d/hs_err_pid*.log
-geocalc-backend/peter.ngo.geocalc3d/.vscode/
-
-# === Maven ===
-geocalc-backend/peter.ngo.geocalc3d/.mvn/
-geocalc-backend/peter.ngo.geocalc3d/pom.xml.tag
-geocalc-backend/peter.ngo.geocalc3d/pom.xml.releaseBackup
-geocalc-backend/peter.ngo.geocalc3d/pom.xml.versionsBackup
-geocalc-backend/peter.ngo.geocalc3d/release.properties
-
-# === IDEs & Editors ===
-.idea/
-.vscode/
-*.iml
-*.swp
-*.swo
-
-# === macOS / Windows ===
-.DS_Store
-Thumbs.db
 
 # === Docker / Devcontainer ===
 .dockerignore
@@ -49,3 +19,14 @@ api-docs/
 # === Test Output ===
 test-output/
 test-results/
+
+# === IDEs & Editors ===
+.idea/
+.vscode/
+*.iml
+*.swp
+*.swo
+
+# === macOS / Windows ===
+.DS_Store
+Thumbs.db
