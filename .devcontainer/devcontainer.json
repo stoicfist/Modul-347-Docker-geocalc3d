@@ -5,12 +5,16 @@
   "workspaceFolder": "/workspace",
   "forwardPorts": [4200, 8080, 8081, 5433, 5050],
   "postCreateCommand": "npm install --prefix geocalc-frontend",
-  "extensions": [
-    "vscjava.vscode-java-pack",
-    "angular.ng-template",
-    "dbaeumer.vscode-eslint",
-    "ms-vscode.js-debug",
-    "vscjava.vscode-java-debug",
-    "cweijan.vscode-postgresql"
-  ]
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscjava.vscode-java-pack",
+        "angular.ng-template",
+        "dbaeumer.vscode-eslint",
+        "ms-vscode.js-debug",
+        "vscjava.vscode-java-debug",
+        "cweijan.vscode-postgresql"
+      ]
+    }
+  }
 }
