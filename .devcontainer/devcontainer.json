@@ -8,6 +8,9 @@
   "extensions": [
     "vscjava.vscode-java-pack",
     "angular.ng-template",
-    "dbaeumer.vscode-eslint"
+    "dbaeumer.vscode-eslint",
+    "ms-vscode.js-debug",
+    "vscjava.vscode-java-debug",
+    "cweijan.vscode-postgresql"
   ]
 }
