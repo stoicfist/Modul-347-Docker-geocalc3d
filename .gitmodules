@@ -1,0 +1,9 @@
+[submodule "geocalc-frontend"]
+    path = geocalc-frontend
+    url  = https://github.com/stoicfist/M295-project-geocalc-3d-frontend.git
+    branch = main
+
+[submodule "geocalc-backend"]
+    path = geocalc-backend
+    url  = https://github.com/stoicfist/M295-project-geocalc3d-backend.git
+    branch = main
