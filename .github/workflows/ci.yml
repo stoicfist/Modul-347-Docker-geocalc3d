@@ -44,12 +44,11 @@ jobs:
           java-version: '17'
           cache: maven
 
-      # Falls dein mvnw im Backend-Root liegt und das Modul peter.ngo.geocalc3d heißt:
       - name: Test & verify
-        run: ./mvnw -B -ntp -pl peter.ngo.geocalc3d -am clean verify
+        run: mvn -B -ntp -f peter.ngo.geocalc3d/pom.xml clean verify
 
       - name: Package (skip tests)
-        run: ./mvnw -B -ntp -pl peter.ngo.geocalc3d -am -DskipTests package
+        run: mvn -B -ntp -f peter.ngo.geocalc3d/pom.xml -DskipTests package
 
       - name: Upload test reports
         if: always()
@@ -93,8 +92,10 @@ jobs:
       - name: Install deps
         run: npm ci
 
+      # nutzt "npm" falls vorhanden, sonst "npx"
       - name: Lint
-        run: npm run lint
+        run: |
+          npm run -s lint || npx ng lint
 
       - name: Setup Chrome (for Karma)
         uses: browser-actions/setup-chrome@v1
