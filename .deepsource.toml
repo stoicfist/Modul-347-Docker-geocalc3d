@@ -1,21 +1,38 @@
 version = 1
 
-# ======================================================
-# 🟣 JavaScript / TypeScript (Angular Frontend)
-# ======================================================
+# -------------------------------------------------------
+# Globale Ausnahmen (Pfad-Muster, die ignoriert werden)
+# -------------------------------------------------------
+exclude_patterns = [
+  "geocalc-frontend/node_modules/**",
+  "geocalc-frontend/.angular/cache/**",
+  "geocalc-frontend/dist/**",
+  "geocalc-frontend/.bin/**",
+  "geocalc-frontend/.vscode/**",
+  "geocalc-frontend/android/**",
+  "geocalc-frontend/ios/**",
+  "geocalc-frontend/@clerk/localizations/**",
+  "geocalc-backend/**/target/**",
+  "geocalc-backend/**/bin/**",
+  "geocalc-backend/**/obj/**",
+  "geocalc-backend/**/packages/**"
+]
+
+# -------------------------------------------------------
+# JavaScript / TypeScript (Angular-Frontend)
+# -------------------------------------------------------
 [[analyzers]]
 name = "javascript"
 enabled = true
   [analyzers.meta]
-  import_path = "geocalc-frontend"
+  # Angular wird über das Plugin aktiviert
+  plugins = ["angular"]
+  # Umgebung: Node.js
+  environment = ["nodejs"]
 
-
-
-# ======================================================
-# 🟠 Java (Spring Boot Backend)
-# ======================================================
+# -------------------------------------------------------
+# Java (Spring Boot-Backend)
+# -------------------------------------------------------
 [[analyzers]]
 name = "java"
 enabled = true
-  [analyzers.meta]
-  import_path = "geocalc-backend/peter.ngo.geocalc3d"
