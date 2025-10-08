@@ -34,9 +34,6 @@ jobs:
           languages: java
           queries: security-extended
 
-      # ⛔️ DELETE/ENTFERNEN:
-      # - uses: github/codeql-action/autobuild@v3
-
       # ✅ MANUELLER BUILD (pfad zu deinem pom):
       - name: Build backend module
         run: mvn -B -ntp -f geocalc-backend/peter.ngo.geocalc3d/pom.xml -DskipTests package
