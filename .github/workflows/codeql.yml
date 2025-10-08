@@ -6,33 +6,66 @@ on:
   pull_request:
     branches: [ main, master ]
   schedule:
-    - cron: '0 3 * * 1'   # wöchentlich
+    - cron: "0 3 * * 1"   # wöchentlich
+
+permissions:
+  contents: read
+  security-events: write
+  actions: read
 
 jobs:
   analyze:
-    name: Analyze (Java + JS/TS)
+    name: CodeQL (${{ matrix.language }})
     runs-on: ubuntu-latest
-    permissions:
-      security-events: write
-      contents: read
-      actions: read
     strategy:
       fail-fast: false
       matrix:
         language: [ 'java', 'javascript-typescript' ]
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout (with submodules)
+        uses: actions/checkout@v4
         with:
           submodules: recursive
           fetch-depth: 0
+          # token: ${{ secrets.SUBMODULE_TOKEN }}  # falls Submodules privat sind
 
-      - uses: github/codeql-action/init@v3
+      - name: Set up Java (for Java job)
+        if: matrix.language == 'java'
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+
+      - name: Init CodeQL
+        uses: github/codeql-action/init@v3
         with:
           languages: ${{ matrix.language }}
           queries: security-extended
 
-      - uses: github/codeql-action/autobuild@v3
+      # ====== MANUAL BUILD STEPS ======
+      # Java: explizit das Modul bauen (kein autobuild)
+      - name: Build Java module with Maven
+        if: matrix.language == 'java'
+        run: |
+          mvn -B -ntp -f geocalc-backend/peter.ngo.geocalc3d/pom.xml -DskipTests package
 
-      - uses: github/codeql-action/analyze@v3
+      # JS/TS: ein minimaler Build reicht für die Extraktion
+      - name: Install frontend deps
+        if: matrix.language == 'javascript-typescript'
+        working-directory: geocalc-frontend
+        run: npm ci
+
+      - name: Optional frontend build (skip if not needed)
+        if: matrix.language == 'javascript-typescript'
+        working-directory: geocalc-frontend
+        run: |
+          if [ -f package.json ] && jq -e '.scripts.build' package.json >/dev/null; then
+            npm run build --if-present
+          fi
+
+      - name: CodeQL Analyze
+        uses: github/codeql-action/analyze@v3
         with:
           category: "/language:${{ matrix.language }}"
