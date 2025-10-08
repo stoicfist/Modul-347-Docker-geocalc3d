@@ -46,13 +46,6 @@ jobs:
         working-directory: geocalc-frontend
         run: npm ci
 
-      - name: Optional frontend build (skip if not needed)
-        working-directory: geocalc-frontend
-        run: |
-          if [ -f package.json ] && jq -e '.scripts.build' package.json >/dev/null; then
-            npm run build --if-present
-          fi
-
       - name: CodeQL Analyze
         uses: github/codeql-action/analyze@v4
         with:
