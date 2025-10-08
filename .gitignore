@@ -15,7 +15,6 @@ swagger-ui.html
 api-docs/
 
 # === Git & Submodule Metadata ===
-**/.gitmodules
 **/.git/
 
 # === Test Output ===
