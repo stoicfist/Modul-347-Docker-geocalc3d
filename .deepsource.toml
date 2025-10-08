@@ -6,17 +6,10 @@ version = 1
 [[analyzers]]
 name = "javascript"
 enabled = true
-
   [analyzers.meta]
-  # Wichtig: DeepSource erkennt Angular/TypeScript automatisch,
-  # wenn TS-Dateien und package.json vorhanden sind.
-  # Keine root_patterns oder frameworks mehr nötig.
-  include_patterns = ["geocalc-frontend/**"]
-  exclude_patterns = [
-    "geocalc-frontend/dist/**",
-    "geocalc-frontend/coverage/**",
-    "geocalc-frontend/node_modules/**"
-  ]
+  import_path = "geocalc-frontend"
+
+
 
 # ======================================================
 # 🟠 Java (Spring Boot Backend)
@@ -24,22 +17,5 @@ enabled = true
 [[analyzers]]
 name = "java"
 enabled = true
-
   [analyzers.meta]
-  # Maven wird automatisch erkannt, wenn pom.xml existiert.
-  include_patterns = ["geocalc-backend/peter.ngo.geocalc3d/**"]
-  exclude_patterns = [
-    "geocalc-backend/**/target/**"
-  ]
-
-# ======================================================
-# ⚙️ Optional – allgemeine Ignoriermuster
-# ======================================================
-exclude_patterns = [
-  ".github/**",
-  "**/*.min.js",
-  "**/node_modules/**",
-  "**/dist/**",
-  "**/coverage/**",
-  "**/target/**"
-]
+  import_path = "geocalc-backend/peter.ngo.geocalc3d"
