@@ -1,0 +1,15 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/geocalc-frontend"
+    schedule: { interval: "weekly" }
+    open-pull-requests-limit: 5
+
+  - package-ecosystem: "maven"
+    directory: "/geocalc-backend/peter.ngo.geocalc3d"
+    schedule: { interval: "weekly" }
+    open-pull-requests-limit: 5
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule: { interval: "weekly" }

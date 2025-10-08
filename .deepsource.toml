@@ -1,0 +1,35 @@
+version = 1
+
+# ---------- JavaScript / TypeScript (Angular) ----------
+[[analyzers]]
+name = "javascript"
+enabled = true
+  [analyzers.meta]
+  # Root deines Frontends
+  root_patterns = ["geocalc-frontend/"]
+  # TypeScript einschalten
+  typescript = true
+  # Framework-Hinweise optional
+  frameworks = ["angular"]
+
+# ---------- Java (Spring Boot) ----------
+[[analyzers]]
+name = "java"
+enabled = true
+  [analyzers.meta]
+  # Root deines Maven-Moduls (pom.xml liegt hier)
+  root_patterns = ["geocalc-backend/peter.ngo.geocalc3d/"]
+  maven = true
+
+# ---------- (Beispiel) ignorieren ----------
+# [[transformers]]   # Formatierer, optional
+# name = "google-java-format"
+# enabled = true
+
+# Ignoriere generierte/Build-Verzeichnisse
+exclude_patterns = [
+  "geocalc-frontend/dist/**",
+  "geocalc-frontend/coverage/**",
+  "geocalc-backend/**/target/**",
+  "**/*.min.js"
+]
