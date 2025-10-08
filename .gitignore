@@ -7,6 +7,8 @@ docker/.env
 docker-compose.override.yml
 docker/keycloak-import/*.realm.json
 docker/keycloak-import/*.json
+docker/befehl-präsentation
+docker/free_port_8080.sh
 
 # === Swagger Generated Files (if applicable) ===
 swagger-ui.html
@@ -29,4 +31,3 @@ test-results/
 
 # === macOS / Windows ===
 .DS_Store
-Thumbs.db
