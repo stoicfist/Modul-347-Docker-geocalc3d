@@ -10,9 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     defaults: { run: { working-directory: geocalc-backend } }
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with: { submodules: recursive, fetch-depth: 0 }
-      - uses: actions/setup-java@v4
+      - uses: actions/setup-java@v5
         with: { distribution: temurin, java-version: '17', cache: 'maven' }
       - run: mvn -B -ntp -f peter.ngo.geocalc3d/pom.xml clean verify
       - run: mvn -B -ntp -f peter.ngo.geocalc3d/pom.xml -DskipTests package
