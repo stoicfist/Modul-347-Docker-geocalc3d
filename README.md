@@ -26,6 +26,19 @@ Eine containerisierte Fullstack-Applikation zur Eingabe, Berechnung und 3D-Visua
 - Authentifizierung via Keycloak (OAuth2 / JWT)
 - Swagger UI zur API-Dokumentation
 
+### 📁 Hinweis: Git-Submodule
+
+    Das Projekt verwendet Git-Submodule für geocalc-frontend und geocalc-backend.
+    Um den vollständigen Quellcode nach dem Klonen sichtbar zu machen, führe bitte zusätzlich folgenden Befehl im Terminal aus:
+    git submodule update --init --recursive
+
+    Alternativ:
+    Wenn du das ZIP heruntergeladen hast, kann es sein, dass die Submodule fehlen. In diesem Fall musst du das Projekt über Git klonen:
+    git clone --recurse-submodules https://github.com/stoicfist/Modul-347-Docker-geocalc3d.git
+
+
+    
+
 ### 🧱 Container-Services (Docker Compose)
 | Service       | Beschreibung                                     |
 |---------------|--------------------------------------------------|
@@ -40,10 +53,9 @@ Eine containerisierte Fullstack-Applikation zur Eingabe, Berechnung und 3D-Visua
 
 ### 🏗️ Lokaler Build & Start
 Erstellt alle Images lokal:
-```bash
+
 docker compose -f docker/docker-compose-build.yml up --build
 
----
 
 ## ☁️ Start mit Docker-Hub-Images
 
