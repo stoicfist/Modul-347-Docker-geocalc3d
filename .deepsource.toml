@@ -1,35 +1,45 @@
 version = 1
 
-# ---------- JavaScript / TypeScript (Angular) ----------
+# ======================================================
+# 🟣 JavaScript / TypeScript (Angular Frontend)
+# ======================================================
 [[analyzers]]
 name = "javascript"
 enabled = true
-  [analyzers.meta]
-  # Root deines Frontends
-  root_patterns = ["geocalc-frontend/"]
-  # TypeScript einschalten
-  typescript = true
-  # Framework-Hinweise optional
-  frameworks = ["angular"]
 
-# ---------- Java (Spring Boot) ----------
+  [analyzers.meta]
+  # Wichtig: DeepSource erkennt Angular/TypeScript automatisch,
+  # wenn TS-Dateien und package.json vorhanden sind.
+  # Keine root_patterns oder frameworks mehr nötig.
+  include_patterns = ["geocalc-frontend/**"]
+  exclude_patterns = [
+    "geocalc-frontend/dist/**",
+    "geocalc-frontend/coverage/**",
+    "geocalc-frontend/node_modules/**"
+  ]
+
+# ======================================================
+# 🟠 Java (Spring Boot Backend)
+# ======================================================
 [[analyzers]]
 name = "java"
 enabled = true
+
   [analyzers.meta]
-  # Root deines Maven-Moduls (pom.xml liegt hier)
-  root_patterns = ["geocalc-backend/peter.ngo.geocalc3d/"]
-  maven = true
+  # Maven wird automatisch erkannt, wenn pom.xml existiert.
+  include_patterns = ["geocalc-backend/peter.ngo.geocalc3d/**"]
+  exclude_patterns = [
+    "geocalc-backend/**/target/**"
+  ]
 
-# ---------- (Beispiel) ignorieren ----------
-# [[transformers]]   # Formatierer, optional
-# name = "google-java-format"
-# enabled = true
-
-# Ignoriere generierte/Build-Verzeichnisse
+# ======================================================
+# ⚙️ Optional – allgemeine Ignoriermuster
+# ======================================================
 exclude_patterns = [
-  "geocalc-frontend/dist/**",
-  "geocalc-frontend/coverage/**",
-  "geocalc-backend/**/target/**",
-  "**/*.min.js"
+  ".github/**",
+  "**/*.min.js",
+  "**/node_modules/**",
+  "**/dist/**",
+  "**/coverage/**",
+  "**/target/**"
 ]
