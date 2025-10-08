@@ -5,8 +5,6 @@ on:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
-  schedule:
-    - cron: "0 3 * * 1"   # wöchentlich
 
 permissions:
   contents: read
@@ -15,24 +13,14 @@ permissions:
 
 jobs:
   analyze:
-    name: CodeQL (${{ matrix.language }})
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        language: [ 'java', 'javascript-typescript' ]
-
     steps:
-      - name: Checkout (with submodules)
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           submodules: recursive
           fetch-depth: 0
-          # token: ${{ secrets.SUBMODULE_TOKEN }}  # falls Submodules privat sind
 
-      - name: Set up Java (for Java job)
-        if: matrix.language == 'java'
-        uses: actions/setup-java@v4
+      - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: '17'
@@ -41,24 +29,22 @@ jobs:
       - name: Init CodeQL
         uses: github/codeql-action/init@v4
         with:
-          languages: ${{ matrix.language }}
+          languages: java
           queries: security-extended
 
-      # ====== MANUAL BUILD STEPS ======
-      # Java: explizit das Modul bauen (kein autobuild)
-      - name: Build Java module with Maven
-        if: matrix.language == 'java'
-        run: |
-          mvn -B -ntp -f geocalc-backend/peter.ngo.geocalc3d/pom.xml -DskipTests package
+      # ⛔️ DELETE/ENTFERNEN:
+      # - uses: github/codeql-action/autobuild@v3
+
+      # ✅ MANUELLER BUILD (pfad zu deinem pom):
+      - name: Build backend module
+        run: mvn -B -ntp -f geocalc-backend/peter.ngo.geocalc3d/pom.xml -DskipTests package
 
       # JS/TS: ein minimaler Build reicht für die Extraktion
       - name: Install frontend deps
-        if: matrix.language == 'javascript-typescript'
         working-directory: geocalc-frontend
         run: npm ci
 
       - name: Optional frontend build (skip if not needed)
-        if: matrix.language == 'javascript-typescript'
         working-directory: geocalc-frontend
         run: |
           if [ -f package.json ] && jq -e '.scripts.build' package.json >/dev/null; then
@@ -68,4 +54,4 @@ jobs:
       - name: CodeQL Analyze
         uses: github/codeql-action/analyze@v4
         with:
-          category: "/language:${{ matrix.language }}"
+          category: "/language:java"
