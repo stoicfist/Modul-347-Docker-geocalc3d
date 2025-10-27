@@ -16,7 +16,7 @@ jobs:
         with: { distribution: temurin, java-version: '17', cache: 'maven' }
       - run: mvn -B -ntp -f peter.ngo.geocalc3d/pom.xml clean verify
       - run: mvn -B -ntp -f peter.ngo.geocalc3d/pom.xml -DskipTests package
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v5
         with:
           name: backend-tests
           path: geocalc-backend/**/target/surefire-reports/**

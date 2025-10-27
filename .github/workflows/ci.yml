@@ -52,7 +52,7 @@ jobs:
 
       - name: Upload test reports
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: backend-tests
           path: |
@@ -63,7 +63,7 @@ jobs:
 
       - name: Upload JAR
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: backend-jar
           path: geocalc-backend/peter.ngo.geocalc3d/target/*.jar
@@ -110,7 +110,7 @@ jobs:
 
       - name: Upload coverage
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: frontend-coverage
           path: geocalc-frontend/coverage/**
@@ -118,7 +118,7 @@ jobs:
 
       - name: Upload web-dist
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: web-dist
           path: geocalc-frontend/dist/**
