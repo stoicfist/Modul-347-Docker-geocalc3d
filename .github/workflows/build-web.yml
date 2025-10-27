@@ -16,5 +16,5 @@ jobs:
         with: { node-version: '20', cache: 'npm', cache-dependency-path: 'geocalc-frontend/package-lock.json' }
       - run: npm ci
       - run: npm run build -- --configuration=production
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v5
         with: { name: web-dist, path: geocalc-frontend/dist/**, if-no-files-found: 'warn' }
